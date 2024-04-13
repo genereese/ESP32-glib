@@ -4,14 +4,15 @@ You probably want to hook up your ESP32 boards to different computers as your de
 
 ## On the transmitting ESP32
 Technically, this is all you need to do on the transmitter, but you will likely want to send to specific boards rather than broadcast to everything:
-```
+```python
 from glib import gspnow
 c = gspnow.Connection()
 c.broadcast("Some data")
 ```
 
 To send to a specific board or boards:
-```
+
+```python
 # Import the connection library
 from glib import gspnow
 
@@ -47,7 +48,7 @@ peer_fun_1.send(test_data)
 ```
 
 ## On the receiving ESP board(s)
-```
+```python
 # Import the library
 from glib import gspnow
 
