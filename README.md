@@ -55,9 +55,11 @@ peer_group_sender = c.peerGroupAdd("Sender")
 #  This prevents it from receiving unintentional data from unauthorized ESP boards that are transmitting
 peer_sender = peer_group_sender.peerAdd("9C:9C:1F:E9:D6:14")
 
-# Finally, you need to override the Connection object's callback function to do something useful with the data it receives
+# Finally, you need to override the Connection object's callback function to do
+#  something useful with the data it receives
 
 # Define a new callback function that accepts two parameters, the sender's MAC address and the data:
+#  This function is run every time this board receives data from an authorized sender
 def onDataReceived(sender, data):
   # Do something cool with the data
   print("Received data from: " + sender)
