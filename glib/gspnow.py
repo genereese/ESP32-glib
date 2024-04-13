@@ -2,6 +2,7 @@
 # Handle imports
 import espnow
 import network
+import time
 
 from glib import pickle
 from glib.glog import Logger
@@ -53,7 +54,7 @@ class Peer:
         serialized_data = pickle.dumps(data)
         logger.info("  Sending to: " + str(self))
         logger.info("   " + str(data))
-        self._connection.send(self.getMACEncoded(), serialized_data)
+        self._connection.send(self._mac_btyearray, serialized_data)
     
     def __repr__(self):
         return_string = "Peer (" + self.getMAC()
@@ -85,13 +86,9 @@ class PeerGroup:
         except:
             logger.info("  ERROR: Could not add peer")
         else:
-            try:
-                self.parent._connection.add_peer(peer.getMACEncoded())
-            except OSError:
-                logger.info("  Peer already exists!")
-            else:
-                self.peers[peer.getMAC()] = peer
-                self.parent.peers[peer.getMAC()] = peer
+            self.parent._connection.add_peer(peer._mac_btyearray)
+            self.peers[peer.getMAC()] = peer
+            self.parent.peers[peer.getMAC()] = peer
             return peer
     
     def peerRemove(self, mac_address):
@@ -193,12 +190,12 @@ class Connection(Peer):
         
         sender_mac = ':'.join('{:02x}'.format(b) for b in sender).upper()
 
-        logger.debug("Received data from: " + sender_mac)
+        logger.info("Received data from: " + sender_mac)
 
         try:
             self.peers[sender_mac]
         except KeyError:
-            logger.debug(" Sender is not in peer list; ignoring sent data.")
+            logger.info(" Sender is not in peer list; ignoring sent data.")
             return
         else:
             data = pickle.loads(data)
