@@ -4,7 +4,7 @@
 
 ```
 # Import the connection library
-import gspnow
+from glib import gspnow
 
 # Create the base connection object
 c = gspnow.Connection()
@@ -40,7 +40,7 @@ peer_fun_1.send(test_data)
 ## On the receiving ESP board(s)
 ```
 # Import the library
-import gspnow
+from glib import gspnow
 
 # Set up the ESPNOW connection
 c = gspnow.Connection()
