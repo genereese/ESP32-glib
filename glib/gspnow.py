@@ -202,7 +202,7 @@ class Connection(Peer):
             return
         else:
             data = pickle.loads(data)
-            self.onDataReceived(sender, data)
+            self.onDataReceived(sender_mac, data)
 
     def onDataReceived(self, sender, data):
         logger.info(sender, ":", data)
