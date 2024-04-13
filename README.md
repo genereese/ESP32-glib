@@ -1,5 +1,7 @@
 # GSPNOW Usage
 
+You probably want to hook up your ESP32 boards to different computers as your dev system will likely get confused if you have multiple ESP32 boards connected to it at the same time.
+
 ## On the transmitting ESP32
 
 ```
