@@ -2,9 +2,9 @@
 # Handle imports
 import espnow
 import network
-import pickle
 
-from glog import Logger
+from glib import pickle
+from glib.glog import Logger
 
 """
 Log levels:
