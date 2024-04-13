@@ -26,7 +26,7 @@ peer_fun_1 = peer_group_fun.peerAdd("CC:CC:CC:CC:CC:CC", "The fun device")
 
 # Create some test data to send
 test_data = {'name': "Gene",
-             'description: 'Cool guy',
+             'description': 'Cool guy',
              'age': 43}
 
 # Send the data to all configured peers
