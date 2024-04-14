@@ -61,6 +61,7 @@ peer_group_sender = c.peerGroupAdd("Sender")
 # Add the MAC of the sending device as a Peer
 #  This has to be done or this device will ignore any data received.
 #  This prevents it from receiving unintentional data from unauthorized ESP boards that are transmitting
+
 peer_sender = peer_group_sender.peerAdd("AA:AA:AA:AA:AA:AA")
 
 # Finally, you need to override the Connection object's callback function to do
